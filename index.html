@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exam Timetable</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>College Exam Timetable</h1>
+    <div id="userBox" class="hidden">
+      <span id="userLabel"></span>
+      <button id="logoutBtn" class="btn ghost">Log out</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- AUTH -->
+    <section id="authView" class="card narrow">
+      <div class="tabs">
+        <button id="tabLogin" class="tab active">Login</button>
+        <button id="tabRegister" class="tab">Register</button>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <label>Role
+          <select id="loginRole"><option value="student">Student</option><option value="admin">Admin</option></select>
+        </label>
+        <label>Email <input id="loginEmail" type="email" autocomplete="username"></label>
+        <label>Password <input id="loginPassword" type="password" autocomplete="current-password"></label>
+        <p id="loginError" class="error"></p>
+        <button class="btn" type="submit">Log in</button>
+      </form>
+
+      <form id="registerForm" class="hidden" novalidate>
+        <label>Role
+          <select id="regRole"><option value="student">Student</option><option value="admin">Admin</option></select>
+        </label>
+        <label>Full name <input id="regName" type="text"></label>
+        <label>Email <input id="regEmail" type="email" autocomplete="username"></label>
+        <label>Password (min 6 characters) <input id="regPassword" type="password" autocomplete="new-password"></label>
+        <div id="studentFields" class="row">
+          <label>Year
+            <select id="regYear"><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+          </label>
+          <label>Section
+            <select id="regSection"><option value="">Select</option><option>A</option><option>B</option><option>C</option><option>D</option></select>
+          </label>
+        </div>
+        <label id="adminCodeBox" class="hidden">Admin code <input id="regAdminCode" type="password"></label>
+        <p id="registerError" class="error"></p>
+        <button class="btn" type="submit">Create account</button>
+      </form>
+    </section>
+
+    <!-- ADMIN -->
+    <section id="adminView" class="hidden">
+      <div class="card">
+        <h2>Add an exam</h2>
+        <form id="examForm" novalidate>
+          <div class="grid">
+            <label>Subject name <input id="exSubject" type="text"></label>
+            <label>Year
+              <select id="exYear"><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+            </label>
+            <label>Section
+              <select id="exSection"><option value="">Select</option><option>A</option><option>B</option><option>C</option><option>D</option></select>
+            </label>
+            <label>Exam date <input id="exDate" type="date"></label>
+            <label>Start time <input id="exStart" type="time"></label>
+            <label>End time <input id="exEnd" type="time"></label>
+          </div>
+          <ul id="examErrors" class="error-list"></ul>
+          <button class="btn" type="submit">Add exam</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>All exams</h2>
+        <div id="adminTable"></div>
+      </div>
+    </section>
+
+    <!-- STUDENT -->
+    <section id="studentView" class="hidden">
+      <div class="card">
+        <h2>Your exams</h2>
+        <p id="studentClass" class="muted"></p>
+        <div id="studentTable"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
